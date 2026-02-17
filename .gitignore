@@ -1,1 +1,14 @@
-/target/
+# Compiled files
+*.class
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# Build directories
+target/
+build/
+
