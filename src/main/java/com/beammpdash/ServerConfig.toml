@@ -28,4 +28,4 @@ Tags = "Freeroam"
 # AuthKey has to be filled out in order to run the server
 AuthKey = "e1daee56-ccf8-48c7-8f38-7edcd38acef6"
 MaxPlayers = 8
-Map = "/levels/tset/info.json"
+Map = "/levels/west_coast_usa/info.json"
