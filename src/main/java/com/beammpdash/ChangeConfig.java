@@ -1,9 +1,15 @@
 package com.beammpdash;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ChangeConfig {
+public class ChangeConfig 
+{
 
     private static final String FILE_PATH = "ServerConfig.toml";
 
@@ -27,7 +33,8 @@ public class ChangeConfig {
 
             for(int i = 0; i < lines.size(); i++)
             {
-                if(lines.get(i).trim().startsWith(startsWith)) {
+                if(lines.get(i).trim().startsWith(startsWith)) 
+                {
                     lines.set(i, newLine);
                     found = true;
                     break;

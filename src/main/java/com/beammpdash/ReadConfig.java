@@ -3,7 +3,8 @@ package com.beammpdash;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class ReadConfig {
+public class ReadConfig 
+{
 
     private static final String FILE_PATH = "ServerConfig.toml";
 
@@ -12,19 +13,22 @@ public class ReadConfig {
     {
         synchronized(ConfigLock.LOCK)
         {
-            try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            try(BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) 
+            {
                 String line;
 
-                while ((line = reader.readLine()) != null) {
+                while ((line = reader.readLine()) != null) 
+                {
                     line = line.trim();
-                    if (line.startsWith(startsWith)) {
+                    if (line.startsWith(startsWith)) 
+                    {
                         return line;
                     }
                 }
 
                 return "No such line exists.";
             }
-            catch (Exception e) {
+            catch(Exception e) {
                 e.printStackTrace();
                 return "Failed: " + e.getMessage();
             }
@@ -37,7 +41,9 @@ public class ReadConfig {
     {
         String line = readConfig(key + " = ");
         if(line.equals("No such line exists.") || line.equals("Failed"))
+        {
             return null;
+        }
 
         return line.substring(line.indexOf("=") + 1).trim();
     }
@@ -47,8 +53,10 @@ public class ReadConfig {
     public static String readMap() 
     {
         String value = extractValue("Map");
-        if (value == null) return null;
-
+        if (value == null) 
+        {
+            return null;
+        }
         // remove quotes
         value = value.replace("\"", "");
 
@@ -60,15 +68,20 @@ public class ReadConfig {
     public static int readMaxCars() 
     {
         String value = extractValue("MaxCars");
-        if (value == null) return -1;
-
+        if (value == null)
+        {
+             return -1;
+        }
         return Integer.parseInt(value);
     }
 
     public static String readDescription() 
     {
         String value = extractValue("Description");
-        if (value == null) return null;
+        if (value == null) 
+        {
+            return null;
+        }
 
         return value.replace("\"", "");
     }
@@ -76,7 +89,10 @@ public class ReadConfig {
     public static String readName() 
     {
         String value = extractValue("Name");
-        if (value == null) return null;
+        if (value == null) 
+        {
+            return null;
+        }
 
         return value.replace("\"", "");
     }
@@ -84,7 +100,10 @@ public class ReadConfig {
     public static int readPort() 
     {
         String value = extractValue("Port");
-        if (value == null) return -1;
+        if (value == null)
+        {
+             return -1;
+        }
 
         return Integer.parseInt(value);
     }
@@ -92,7 +111,10 @@ public class ReadConfig {
     public static int readMaxPlayers() 
     {
         String value = extractValue("MaxPlayers");
-        if (value == null) return -1;
+        if (value == null)
+        {
+             return -1;
+        }
 
         return Integer.parseInt(value);
     }
@@ -100,15 +122,20 @@ public class ReadConfig {
     public static boolean readPrivate() 
     {
         String value = extractValue("Private");
-        if (value == null) return false;
-
+        if (value == null) 
+        {
+            return false;
+        }
         return Boolean.parseBoolean(value);
     }
 
     public static boolean readAllowGuests() 
     {
         String value = extractValue("AllowGuests");
-        if (value == null) return false;
+        if (value == null) 
+        {
+            return false;
+        }
 
         return Boolean.parseBoolean(value);
     }
@@ -116,7 +143,10 @@ public class ReadConfig {
     public static boolean readDebug() 
     {
         String value = extractValue("Debug");
-        if (value == null) return false;
+        if (value == null) 
+        {
+            return false;
+        }
 
         return Boolean.parseBoolean(value);
     }
@@ -124,7 +154,10 @@ public class ReadConfig {
     public static String readTags() 
     {
         String value = extractValue("Tags");
-        if (value == null) return null;
+        if (value == null) 
+        {
+            return null;
+        }
 
         return value.replace("\"", "");
     }
@@ -132,7 +165,10 @@ public class ReadConfig {
     public static String readAuthKey() 
     {
         String value = extractValue("AuthKey");
-        if (value == null) return null;
+        if (value == null) 
+        {
+            return null;
+        }
 
         return value.replace("\"", "");
     }
