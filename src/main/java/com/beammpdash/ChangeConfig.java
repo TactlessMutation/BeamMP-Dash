@@ -16,24 +16,26 @@ public class ChangeConfig
     // Replace line
     private static String replaceLine(String startsWith, String newLine) throws IOException 
     {
-        synchronized(ConfigLock.LOCK) 
+        synchronized (ConfigLock.LOCK) 
         {
 
             List<String> lines = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
-            String line;
 
-            while((line = reader.readLine()) != null) 
+            // Read file
+            try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) 
             {
-                lines.add(line);
+                String line;
+                while ((line = reader.readLine()) != null) 
+                {
+                    lines.add(line);
+                }
             }
-            reader.close();
 
             boolean found = false;
 
-            for(int i = 0; i < lines.size(); i++)
+            for (int i = 0; i < lines.size(); i++) 
             {
-                if(lines.get(i).trim().startsWith(startsWith)) 
+                if (lines.get(i).trim().startsWith(startsWith)) 
                 {
                     lines.set(i, newLine);
                     found = true;
@@ -41,22 +43,24 @@ public class ChangeConfig
                 }
             }
 
-            if(!found) 
+            if (!found) 
             {
                 throw new IllegalStateException("Key not found: " + startsWith);
             }
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH));
-            for(String l : lines) 
+            // Write file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) 
             {
-                writer.write(l);
-                writer.newLine();
+                for (String l : lines) 
+                {
+                    writer.write(l);
+                    writer.newLine();
+                }
             }
-            writer.close();
 
             return "Success!";
         }
-    }
+}
 
 
     // Set Line

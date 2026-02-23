@@ -26,6 +26,6 @@ Debug = false
 # Add custom identifying tags to your server to make it easier to find. Format should be TagA,TagB,TagC. Note the comma seperation.
 Tags = "Freeroam"
 # AuthKey has to be filled out in order to run the server
-AuthKey = "e1daee56-ccf8-48c7-8f38-7edcd38acef6"
+AuthKey = "njrellqnglrqeleqlmlqemrkp"
 MaxPlayers = 8
 Map = "/levels/west_coast_usa/info.json"

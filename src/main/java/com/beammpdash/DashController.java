@@ -131,4 +131,23 @@ public class DashController
     {
         return ChangeConfig.setTags(newTags);
     }
+
+// Start/Stop/Restart
+    @PostMapping("/server")
+    public String setState(@RequestBody String action) throws IOException
+    {
+        action = action.trim().toLowerCase();
+        if(action.equals("start"))
+        {
+            return StartStop.startServer();
+        }
+        else if(action.equals("restart"))
+        {
+            return StartStop.restartServer();
+        }
+        else
+        {
+            return StartStop.stopServer();
+        }
+    }
 }

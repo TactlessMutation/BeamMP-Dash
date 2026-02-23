@@ -2,6 +2,7 @@ package com.beammpdash;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class ReadConfig 
 {
@@ -28,7 +29,8 @@ public class ReadConfig
 
                 return "No such line exists.";
             }
-            catch(Exception e) {
+            catch(IOException e) 
+            {
                 e.printStackTrace();
                 return "Failed: " + e.getMessage();
             }
